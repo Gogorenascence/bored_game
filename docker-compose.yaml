@@ -1,0 +1,37 @@
+volumes:
+    mongo-data:
+        external: true
+    # other volumes...
+services:
+    mongo:
+        image: mongo:5
+        volumes:
+            - mongo-data:/data/db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: password
+    # other services, too...
+    api:
+        build:
+            context: ./api
+            dockerfile: ./Dockerfile.dev
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./api:/app
+        environment:
+            DATABASE_URL: mongodb://root:password@mongo
+            DATABASE_NAME: db-name
+            WAIT_HOSTS: mongo:27017
+    ghi:
+        image: node:lts-bullseye
+        command: /bin/bash run.sh
+        working_dir: /app
+        volumes:
+            - ./ghi:/app
+        ports:
+            - "3000:3000"
+        environment:
+            HOST_OS: ${OS}
+            NODE_ENV: development
+            HOST: "0.0.0.0"
