@@ -1,15 +1,17 @@
 volumes:
-    mongo-data:
+    bored-games:
         external: true
     # other volumes...
 services:
     mongo:
         image: mongo:5
         volumes:
-            - mongo-data:/data/db
+            - bored-games:/data/db
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: password
+        ports:
+            - 27017:27017
     # other services, too...
     api:
         build:
@@ -21,7 +23,7 @@ services:
             - ./api:/app
         environment:
             DATABASE_URL: mongodb://root:password@mongo
-            DATABASE_NAME: db-name
+            DATABASE_NAME: bored-games
             WAIT_HOSTS: mongo:27017
     ghi:
         image: node:lts-bullseye
