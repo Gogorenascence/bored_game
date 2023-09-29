@@ -15,3 +15,15 @@ class PydanticObjectId(ObjectId):
             except ValueError:
                 raise ValueError(f"Not a valid object id: {value}")
         return value
+    
+class MessageIn(BaseModel):
+    content: str
+    sender: str
+    time: dict
+    receiver: str
+
+class Message(MessageIn):
+    id: PydanticObjectId
+
+class MessageOut(MessageIn):
+    id: str

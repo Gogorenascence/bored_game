@@ -15,3 +15,18 @@ class PydanticObjectId(ObjectId):
             except ValueError:
                 raise ValueError(f"Not a valid object id: {value}")
         return value
+    
+class SessionIn(BaseModel):
+    time: dict
+    host: str
+    location: str
+    max_players: int
+    members: List[str]
+    game: str
+    game_chat: List[str]
+
+class Session(SessionIn):
+    id: PydanticObjectId
+
+class SessionOut(SessionIn):
+    id: str

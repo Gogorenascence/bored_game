@@ -17,16 +17,16 @@ class PydanticObjectId(ObjectId):
         return value
     
 class UserIn(BaseModel):
-    collection = List[str]
-    wishlist = List[str]
-    recomendations = List[str]
-    games_played = List[str]
-    friends = List[str]
-    availability = List[dict]
-    preferences = dict
-    socials = List
-    last_seen = dict
-    joined = dict
+    collection: List[str]
+    wishlist: List[str]
+    recomendations: List[str]
+    games_played: List[str]
+    friends: List[str]
+    availability: List[dict]
+    preferences: dict
+    socials: List
+    last_seen: dict
+    joined: dict
 
 class User(UserIn):
     id: PydanticObjectId
