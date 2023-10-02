@@ -25,6 +25,7 @@ services:
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: bored-games
             WAIT_HOSTS: mongo:27017
+            SIGNING_KEY: 874849f2621abafb2d4d57f5be921a4224147bfd96115d7ddbe849rsds80f21f5e7d0pb3d148acbc32a55hj26p3d7f4b9p00d1249e1ec892baf73572353666a97e
     ghi:
         image: node:lts-bullseye
         command: /bin/bash run.sh

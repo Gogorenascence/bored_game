@@ -2,6 +2,7 @@ from .client import Queries
 from bson.objectid import ObjectId
 from pymongo import ReturnDocument, MongoClient
 from models.messages import Message, MessageIn, MessageOut
+from datetime import datetime
 
 class MessageQueries(Queries):
     DB_NAME = 'games'
@@ -9,6 +10,15 @@ class MessageQueries(Queries):
 
     def create_message(self, message_in: MessageIn) -> Message:
         props = message_in.dict()
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": date
+        }
+        props["time"] = time_dict
         self.collection.insert_one(props)
         props['id'] = str(props['_id'])
         return Message(**props)
