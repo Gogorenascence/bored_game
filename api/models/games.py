@@ -31,6 +31,8 @@ class GameIn(BaseModel):
     formats: List #extended rules
     ratings: List[int]
     comments: List
+    created: Optional[dict]
+    updated: Optional[dict]
 
 class Game(GameIn):
     id: PydanticObjectId
