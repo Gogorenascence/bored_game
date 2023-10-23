@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 
+
 function MainPage() {
     
     interface Game {
@@ -39,20 +40,25 @@ function MainPage() {
     }, [])
 
     console.log(allTimeGames)
-
+    
     return (
-        <div className="popular-games">
+        <div className="main-content">
             <div className="three-container">
                 <div className="game-window-1">
-                    <p>{allTimeGames[0].name}</p>
+                    <p>{allTimeGames[0]?.name}</p>
                 </div>
                 <div className="game-window-1">
-                    <p>{allTimeGames[0].name}</p>
+                    <p>{allTimeGames[0]?.name}</p>
                 </div>
                 <div className="game-window-1">
-                    <p>{allTimeGames[0].name}</p>
+                    <p>{allTimeGames[0]?.name}</p>
+            </div>
+            </div>
+            <div className="featured-container">
+                <div className="featured-games">
+                    <p>{allTimeGames[0]?.name}</p>
                 </div>
-            </div>    
+            </div>
         </div>
     )
 }
