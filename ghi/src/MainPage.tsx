@@ -43,20 +43,33 @@ function MainPage() {
     
     return (
         <div className="main-content">
+            <h1 className="section-title">Most Popular Games</h1>
             <div className="three-container">
-                <div className="game-window-1">
-                    <p>{allTimeGames[0]?.name}</p>
+                <div>
+                    <h3 className="game-label">All Time</h3>
+                    <div className="game-window-1">
+                        <p>{allTimeGames[0]?.name}</p>
+                    </div>
                 </div>
-                <div className="game-window-1">
-                    <p>{allTimeGames[0]?.name}</p>
+                <div>
+                    <h3 className="game-label">Monthly</h3>
+                    <div className="game-window-1">
+                        <p>{allTimeGames[0]?.name}</p>
+                    </div>
                 </div>
-                <div className="game-window-1">
-                    <p>{allTimeGames[0]?.name}</p>
-            </div>
+                <div>
+                    <h3 className="game-label">Daily</h3>
+                    <div className="game-window-1">
+                        <p>{allTimeGames[0]?.name}</p>
+                    </div>
+                </div>
             </div>
             <div className="featured-container">
-                <div className="featured-games">
-                    <p>{allTimeGames[0]?.name}</p>
+                <div>
+                    <h1 className="section-title">Featured Games</h1>
+                    <div className="featured-games">
+                        <p>{allTimeGames[0]?.name}</p>
+                    </div>
                 </div>
             </div>
         </div>
