@@ -43,7 +43,7 @@ function Navbar() {
 
     useEffect(() => {
         function handleResize() {
-          if (window.innerWidth > 800 && showMenu) {
+          if (window.innerWidth > 800) {
             // If window size is >= 800px and menu is open, close the menu
             setShowMenu(false);
           }
@@ -63,7 +63,7 @@ function Navbar() {
                     <img src="bored-game-logo.svg" alt="logo"/>
                     <i className="fa fa-bars" aria-hidden="true" onClick={() => handleShowMenu()}></i>
                 </div>
-                <ul className={showMenu? "show-menu": "menu"}>
+                <ul className={showMenu ? "show-menu" : "menu"}>
                 {/* <ul className="show-menu"> */}
                     <li >
                         <NavLink to="/" className="link" onClick={() => handleShowDropdownMenu(true, "home")}>Home</NavLink>
@@ -93,7 +93,15 @@ function Navbar() {
                     <li>
                         <div className="link pointer" onClick={() => handleShowDropdownMenu(true, "gameobjects")}>Game Objects</div>
                     </li>
+                    <li className="user-log-signin">
+                        <div className="link pointer">Log In</div>
+                        <div className="link pointer">Sign Up</div>
+                    </li>
                 </ul>
+                <div className="nav-right">
+                    <p className="nav-button">Log In</p>
+                    <p className="nav-button">Sign Up</p>
+                </div>
             </div>
         </nav>
     )

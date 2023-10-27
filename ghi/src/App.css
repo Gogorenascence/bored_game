@@ -120,6 +120,15 @@
   list-style-type: none;
 }
 
+.nav-right {
+  display: none;
+}
+
+.user-log-signin {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
 .three-container {
   display: flex;
   justify-content: space-evenly;
@@ -160,8 +169,25 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 1rem;
+  }
+
+  .nav-right {
+    margin-left: auto;
+    position: static;
+    display: inline-flex;
+    text-align: center;
+  }
+
+  .nav-button {
+    margin: 0.3rem;
+    background-color: indigo;
+    color: white;
+    padding: 0;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid white;
+    cursor: pointer;
   }
 
   .dropdown-content {
