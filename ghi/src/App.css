@@ -163,6 +163,14 @@
 }
 
 @media (min-width: 800px) {
+  /* body {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
+    background-size: 75vw;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+  } */
+
   .navbar {
     height: 103px;
   }
@@ -255,6 +263,7 @@
 
   .main-content {
     width: 75vw;
+    height: 100%;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -292,5 +301,17 @@
     height: 40vh;
     margin: auto;
     margin-top: 40px;
+  }
+
+  .game-list5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: .25rem; /* Add any gap you want between the cards */
+  }
+
+  .game-item {
+    height: 250px;
+    width: 250px;
+    outline: 1px solid black;
   }
 }

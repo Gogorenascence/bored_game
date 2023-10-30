@@ -84,7 +84,7 @@ function Navbar() {
                         {
                         showDropdownMenu.show && showDropdownMenu.section === "games" ?
                         <div className="dropdown-content">
-                            <NavLink to="/games/all" className="dropdown-link">All Games</NavLink>
+                            <NavLink to="/games" className="dropdown-link">All Games</NavLink>
                             <NavLink to="/games/popular" className="dropdown-link">Popular Games</NavLink>
                         </div> 
                         : null

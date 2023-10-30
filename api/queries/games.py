@@ -1,5 +1,6 @@
 from .client import Queries
 from bson.objectid import ObjectId
+from datetime import datetime
 from pymongo import ReturnDocument, MongoClient
 from models.games import Game, GameIn, GameOut
 
