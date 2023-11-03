@@ -22,7 +22,7 @@ class GameIn(BaseModel):
     min_players: int
     max_players: int
     min_game_length: int
-    max_Game_length: int
+    max_game_length: int
     genre: str
     picture_url: List
     websites: Optional[list]
