@@ -37,6 +37,13 @@
   }
 }
 
+.game-item {
+  width: 100%;
+  height: 40vh;
+  outline: solid 1px black;
+  margin: auto;
+}
+
 .navbar {
   top: 0;
   margin: 0;
@@ -307,6 +314,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: .25rem; /* Add any gap you want between the cards */
+    justify-items: center;
   }
 
   .game-item {
