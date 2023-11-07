@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef} from "react";
+import React, { useEffect, useState, useRef} from "react";
 import { NavLink } from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ function Navbar() {
         section: string
     }
     
-    const navBar = React.useRef<HTMLDivElement>(null);
+    const navBar = useRef<HTMLDivElement>(null);
 
     useOutsideAlerter(navBar)
 
@@ -84,7 +84,7 @@ function Navbar() {
                         {
                         showDropdownMenu.show && showDropdownMenu.section === "games" ?
                         <div className="dropdown-content">
-                            <NavLink to="/games" className="dropdown-link">All Games</NavLink>
+                            <NavLink to="/games/1" className="dropdown-link">All Games</NavLink>
                             <NavLink to="/games/popular" className="dropdown-link">Popular Games</NavLink>
                         </div> 
                         : null

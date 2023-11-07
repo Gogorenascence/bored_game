@@ -169,6 +169,27 @@
   margin-bottom: 0;
 }
 
+.page-numbers {
+  display: flex;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boardgame-title {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boardgame-image {
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 800px) {
   /* body {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
@@ -289,6 +310,7 @@
   }
   
   .game-window-1 {
+    position: relative;
     border: 1px solid black;
     width: 22vw;
     margin: auto;
@@ -313,13 +335,90 @@
   .game-list5 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: .25rem; /* Add any gap you want between the cards */
+    gap: 2rem; /* Add any gap you want between the cards */
     justify-items: center;
   }
 
+  .game-item-container {
+    height: 25vh;
+    width: 13vw;
+    justify-content: center;
+  }
+
   .game-item {
-    height: 250px;
-    width: 250px;
+    height: 25vh;
+    width: 13vw;
     outline: 1px solid black;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .page-numbers {
+    display: flex;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .boardgame-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .boardgame-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel {
+    margin: 0 auto;
+    /* justify-content: center; */
+    height: inherit;
+    width: inherit;
+  }
+
+  .left-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 2px;
+    font-size: 55px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 2px;
+    font-size: 55px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .carousel-dot-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel-dot {
+    margin: 0 2px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .carousel-image {
+    height: inherit;
+    width: inherit;
   }
 }

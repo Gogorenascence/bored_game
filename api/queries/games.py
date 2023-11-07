@@ -24,6 +24,22 @@ class GameQueries(Queries):
         self.collection.insert_one(props)
         props['id'] = str(props['_id'])
         return Game(**props)
+    
+    async def scraper_create_game(self, game_in: GameIn) -> Game:
+        props = game_in
+        date = datetime.now().isoformat()
+        time_dict = {
+            "year": int(date[:4]),
+            "month": int(date[5:7]),
+            "day": int(date[8:10]),
+            "time": date[11:16],
+            "full_time": date
+        }
+        props["created"] = time_dict
+        props["updated"] = time_dict
+        self.collection.insert_one(props)
+        props['id'] = str(props['_id'])
+        return Game(**props)
 
     def get_all_games(self) -> list:
         db = self.collection.find()
@@ -54,6 +70,7 @@ class GameQueries(Queries):
     
     def update_game(self, id: str, game: GameIn) -> GameOut:
         props = game.dict()
+        date = datetime.now().isoformat()
         time_dict = {
             "year": int(date[:4]),
             "month": int(date[5:7]),
