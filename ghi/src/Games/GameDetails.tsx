@@ -1,16 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { Game } from "./GameInterface"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Game } from "./GameInterface";
 
+function GameDetails() {
+    const { id } = useParams<{ id: string }>();
+    const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
-
-const GameDetails: React.FC<{game: Game}> = ({game}) => {
-
-    game = game
+    useEffect(() => {
+        const fetchGameDetails = async () => {
+          try {
+            const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/games/${id}/`);
+            const data = await response.json();
+            setSelectedGame(data);
+          } catch (error) {
+            console.error("Error fetching game details:", error);
+          }
+        };
+    
+        fetchGameDetails();
+      }, [id])
 
     return (
-        <h1>game.name</h1>
-    )
-}
+        <div className="game-details">
+            {selectedGame ? (
+            <div>
+                <h1>{selectedGame.name}</h1>
+                <p>Publisher: {selectedGame.publisher}</p>
+            </div>
+            ) : (
+                <div>...Loading</div>
+            )}
+        </div>
+    );
+};
 
-export default GameDetails
+export default GameDetails;

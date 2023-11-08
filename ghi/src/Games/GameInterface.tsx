@@ -14,5 +14,6 @@ export interface Game {
     ratings: number[],
     comments: string[],
     created: {},
-    updated: {}
+    updated: {},
+    id: string
 }

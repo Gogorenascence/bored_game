@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import {Game} from "./GameInterface" 
 
    
@@ -8,33 +8,37 @@ import {Game} from "./GameInterface"
             pageNumber: string;
         };
         
+        const navigate = useNavigate();
+
         const [games, setGames] = useState<Game[]>([])
+        
         const {pageNumber} = useParams<pageParams>()
+        const currentPage = pageNumber ? parseInt(pageNumber, 10) : 1
         let totalPages = 0
         const [allPages, setAllPages] = useState<number[]>([])
 
     const getAllGames = async() =>{
         const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/games/`);
         const data = await response.json();
-        console.log(data);
-        console.log(pageNumber);
-        const pageCount = parseInt(pageNumber!, 10)*50-50
-        setGames(data.slice(pageCount, pageCount+50));
+        const startIndex = (currentPage - 1) * 50
+        const endIndex = startIndex + 50
+        setGames(data.slice(startIndex, endIndex));
         totalPages = Math.ceil(data.length / 50);
         let tempPages = [];
         for (let i=1; i <= totalPages; i++) {
-            console.log(i);
             tempPages.push(i);
         }
         setAllPages(tempPages);
     };
 
-    console.log(allPages)
-
     useEffect(() => {
         getAllGames();
         window.scrollTo(0, 0);       
     }, [pageNumber]);
+
+    const onGameClick = (game: Game) => {
+        navigate(`/game/${game.id}`);
+    };
 
     return(
         <div className="main-content">
@@ -45,7 +49,11 @@ import {Game} from "./GameInterface"
                         <div className="game-item-container">
                             <h4 className="boardgame-title">{game.name}</h4>
                             <div className="game-item">
-                                <img className="boardgame-image" src={game.picture_url[1]} alt={game.picture_url[0]}/>
+                                <img className="boardgame-image" 
+                                    src={game.picture_url[1]} 
+                                    alt={game.picture_url[0]} 
+                                    onClick={() => onGameClick(game)}
+                                    />
                             </div>
                         </div>
                 )
@@ -56,8 +64,8 @@ import {Game} from "./GameInterface"
             	<div className="page-numbers">
                 {allPages.map(page => {
                     return (
-                        <NavLink to={`/games/${page}`}>
-                            <h4 key={page}>{page}</h4>
+                        <NavLink to={`/games/${page}`} key={page}>
+                            <h4>{page}</h4>
                         </NavLink>
                     )
                 })}                 
