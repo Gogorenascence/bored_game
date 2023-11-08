@@ -37,9 +37,13 @@ class GameQueries(Queries):
         }
         props["created"] = time_dict
         props["updated"] = time_dict
-        self.collection.insert_one(props)
-        props['id'] = str(props['_id'])
-        return Game(**props)
+        db_game = self.collection.find_one({"name": props["name"]})
+        if not db_game:
+            self.collection.insert_one(props)
+            props['id'] = str(props['_id'])
+            return Game(**props)
+        else:
+            print("this would be a dupe")
 
     def get_all_games(self) -> list:
         db = self.collection.find()

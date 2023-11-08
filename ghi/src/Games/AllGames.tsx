@@ -1,33 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import {Game} from "./GameInterface" 
 
-interface Games {
-        name: string,
-        publisher: string,
-        max_players: number,
-        min_players: number,
-        genre: string,
-        game_length: number,
-        interaction: string,
-        picture_url: string[],
-        websites: string[],
-        theming: string,
-        rules: string,
-        formats: string[],
-        ratings: number[],
-        comments: string[],
-        created: {},
-        updated: {}
-      }
-
-
-      
+   
     function AllGames() {
         type pageParams = {
             pageNumber: string;
         };
         
-        const [games, setGames] = useState<Games[]>([])
+        const [games, setGames] = useState<Game[]>([])
         const {pageNumber} = useParams<pageParams>()
         let totalPages = 0
         const [allPages, setAllPages] = useState<number[]>([])

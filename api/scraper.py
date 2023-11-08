@@ -37,7 +37,6 @@ async def main():
 
     for id in top1000_game_ids:
         api_url = base_url + id + "?stats=1"
-        print(api_url)
         api_page = urlopen(api_url)
         api_html = api_page.read().decode('utf')
         api_soup = BeautifulSoup(api_html, 'html.parser')
