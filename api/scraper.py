@@ -89,7 +89,7 @@ async def main():
                 "n/a"
             ],
             "game_mechanics": mechanics,
-            "description": description_html.text
+            "description": description_html.text.replace("<br/>", "\n")
             }
         await game_queries.scraper_create_game(game)
 
