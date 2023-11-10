@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Game } from "./Games/GameInterface";
+import { useNavigate } from "react-router-dom";
 
 const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,6 +21,8 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         setCurrentIndex(gameIndex)
     }
 
+    const navigate = useNavigate()
+
     return (
     <div className="carousel">
         <div className="left-arrow" onClick={goToPrevious}>
@@ -28,7 +31,10 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         <div className="right-arrow" onClick={goToNext}>
             &#129174;
         </div>
-        <img className="carousel-image" src={games[currentIndex]?.picture_url[1]} alt="Game Image"/>
+        <img className="carousel-image pointer"
+          src={games[currentIndex]?.picture_url[1]}
+          alt="Game Image" 
+          onClick={() => navigate(`game/${games[currentIndex].id}`)}/>
         <div className="carousel-dot-container">
             {games.map((game, gameIndex) => (
                 <>
