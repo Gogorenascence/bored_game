@@ -31,7 +31,18 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         <img className="carousel-image" src={games[currentIndex]?.picture_url[1]} alt="Game Image"/>
         <div className="carousel-dot-container">
             {games.map((game, gameIndex) => (
-                <div key={gameIndex} className="carousel-dot" onClick={() => goToGame(gameIndex)}>&#9675;</div>
+                <>
+                    <div key={gameIndex} 
+                        className={ currentIndex !== gameIndex ? "carousel-dot" : "hidden" } 
+                        onClick={() => goToGame(gameIndex)}>
+                        &#9675;
+                    </div>
+                    <div key={gameIndex} 
+                        className={ currentIndex === gameIndex ? "carousel-dot" : "hidden" } 
+                        onClick={() => goToGame(gameIndex)}>
+                        &#9679;
+                    </div>
+                </>
             ))}
         </div>
     </div>

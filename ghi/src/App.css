@@ -197,6 +197,10 @@
   height: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (min-width: 800px) {
   /* body {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
@@ -421,7 +425,8 @@
   .carousel-dot {
     margin: 0 2px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   .carousel-image {
