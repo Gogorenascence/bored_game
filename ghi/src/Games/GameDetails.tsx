@@ -38,7 +38,14 @@ function GameDetails() {
                   <li><p className="description-p">Game genre:</p> {selectedGame.genre}</li>
                   <li><p className="description-p">Games themes:</p> {selectedGame.theming + ' '}</li>
                   <li><p className="description-p">Game Mechanics:</p> {selectedGame.game_mechanics + ' '}</li>
-                  <li><p className="description-p">Description:</p> {selectedGame.description.replaceAll('&quot;', '"').replaceAll('&mdash;', '—').replaceAll('&pound;', '£')}</li>
+                  <li><p className="description-p">Description:
+                  </p> {selectedGame.description
+                  .replaceAll('&quot;', '"')
+                  .replaceAll('&mdash;', '—')
+                  .replaceAll('&pound;', '£')
+                  .replaceAll('&ldquo;', '“')
+                  .replaceAll('&rdquo;', '”')}
+                  </li>
                 </ul>
               </div>
             </div>

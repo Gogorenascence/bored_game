@@ -1,3 +1,9 @@
+:root {
+  --window-height: calc(100vh - 103px);
+  --window-height-account: calc(100vh - 180px);
+  --window-width200: calc(80vw - 200px);
+}
+
 .App {
   text-align: center;
 }
@@ -167,6 +173,7 @@
 
 .section-title {
   margin-bottom: 0;
+  padding-top: 10px;
 }
 
 .page-numbers {
@@ -329,7 +336,7 @@
     width: 70vw;
     height: 40vh;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 10px;
   }
 
   .game-list5 {
@@ -424,7 +431,7 @@
 
   .description-container {
     position: relative;
-    height: 100vh;
+    height: var(--window-height);
     width: 100%;
     display: block;
     overflow: hidden;

@@ -6,23 +6,23 @@ import { Game } from "./Games/GameInterface"
 function MainPage() {
     
 
-    const [monthlyGames, setMonthlyGames] = useState([])
-    const [dailyGames, setDailyGames] = useState([])
-    const [topTenAllTimeGames, setTopTenAllTimeGames] = useState<Game[]>([])
+    const [topTenGamesThisMonth, setTopTenGamesThisMonth] = useState([])
+    const [topTenGamesToday, setTopTenGamesToday] = useState([])
+    const [topTenGamesAllTime, setTopTenGamesAllTime] = useState<Game[]>([])
 
     const getGames = async() => {
         const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/games/`)
         const gameData = await response.json()
-        setTopTenAllTimeGames(gameData.slice(0, 10))
-        setDailyGames(gameData)
-        setMonthlyGames(gameData)
+        setTopTenGamesAllTime(gameData.slice(0, 10))
+        setTopTenGamesToday(gameData.slice(10, 20)) //logic needs to be updated
+        setTopTenGamesThisMonth(gameData.slice(20, 30)) //logic needs to be updated
     }
 
     useEffect(() => {
         getGames()
     }, [])
 
-    console.log(topTenAllTimeGames)
+    console.log(topTenGamesAllTime)
     
     return (
         <div className="main-content">
@@ -31,19 +31,19 @@ function MainPage() {
                 <div>
                     <h3 className="game-label">All Time</h3>
                     <div className="game-window-1">
-                        <Carousel games={topTenAllTimeGames}/>
+                        <Carousel games={topTenGamesAllTime}/>
                     </div>
                 </div>
                 <div>
                     <h3 className="game-label">Monthly</h3>
                     <div className="game-window-1">
-                        <p>{topTenAllTimeGames[0]?.name}</p>
+                    <Carousel games={topTenGamesThisMonth}/>
                     </div>
                 </div>
                 <div>
                     <h3 className="game-label">Daily</h3>
                     <div className="game-window-1">
-                        <p>{topTenAllTimeGames[0]?.name}</p>
+                    <Carousel games={topTenGamesToday}/>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ function MainPage() {
                 <div>
                     <h1 className="section-title">Featured Games</h1>
                     <div className="featured-games">
-                        <p>{topTenAllTimeGames[0]?.name}</p>
+                        <p>{topTenGamesAllTime[0]?.name}</p>
                     </div>
                 </div>
             </div>
