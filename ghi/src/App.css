@@ -1,3 +1,9 @@
+:root {
+  --window-height: calc(100vh - 103px);
+  --window-height-account: calc(100vh - 180px);
+  --window-width200: calc(80vw - 200px);
+}
+
 .App {
   text-align: center;
 }
@@ -34,5 +40,449 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.game-item {
+  width: 100%;
+  height: 40vh;
+  outline: solid 1px black;
+  margin: auto;
+}
+
+.navbar {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-family: sans-serif;
+  line-height: 2.2;
+  background-color: indigo;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.fa-bars {
+  font-size: 1.5rem;
+  color: #24ad89;
+  cursor: pointer;
+}
+
+.fa-bars:hover {
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s linear;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.link:hover {
+  background-color: fuchsia;
+  padding-left: 1.5rem;
+}
+
+.dropdown-content {
+  display: list-item;
+  padding-left: 2rem;
+}
+
+.dropdown-link {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-link:hover {
+  background-color: fuchsia;
+  padding-left: 1.5rem;
+}
+
+.menu {
+  list-style-type: none;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s linear;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  width: 100vw;
+  margin: auto;
+  height: auto;
+  outline: 1px solid black;
+  position: relative;
+}
+
+.show-menu {
+  height: fit-content;
+  list-style-type: none;
+}
+
+.nav-right {
+  display: none;
+}
+
+.user-log-signin {
+  display: inline-flex;
+}
+
+.three-container {
+  display: block;
+  width: 100%;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.game-window-1 {
+  outline: 1px solid black;
+  width: 100%;
+  height: 40vh;
+  margin-bottom: 40px;
+}
+
+.featured-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 100%;
+}
+
+.featured-games {
+  outline: 1px solid black;
+  width: 100vw;
+  height: 40vh;
+}
+.game-label {
+  margin: 0 0 10px 0;
+}
+
+.section-title {
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+
+.page-numbers {
+  display: flex;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boardgame-title {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boardgame-image {
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  /* body {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
+    background-size: 75vw;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+  } */
+
+  .navbar {
+    height: 103px;
+  }
+
+  .navmain {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .nav-right {
+    margin-left: auto;
+    position: static;
+    display: inline-flex;
+    text-align: center;
+  }
+
+  .nav-button {
+    margin: 0.3rem;
+    background-color: indigo;
+    color: white;
+    padding: 0;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid white;
+    cursor: pointer;
+  }
+
+  .dropdown-content {
+    top: 102.8px;
+    position: absolute;
+    z-index: 20;
+    background-color: rgb(105, 0, 180);
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 0 0 5px 5px;
+    padding-left: 1rem;
+  }
+
+  .dropdown-link:hover {
+    background-color: fuchsia;
+    transition: all 0.5s;
+    padding: 0.5rem 1rem;
+    width: 83.6%;
+  }
+
+  .dropdown-link {
+    text-decoration: none;
+    margin: 0.5rem;
+    color: white;
+    transition: all 0.5s;
+    width: 100%;
+    display: inline-flex;
+  }
+
+  .list-item {
+    float: left;
+    overflow: hidden;
+  }
+
+  .nav-header {
+    padding: 0;
+  }
+
+  .fa-bars {
+    display: none;
+  }
+
+  .menu {
+    height: auto;
+    display: flex;
+  }
+
+  .link {
+    padding: 0.5rem 1rem;
+  }
+
+  .link:hover {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+  }
+
+  .user-log-signin {
+    display: none;
+  }
+
+  .main-content {
+    width: 75vw;
+    height: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    position: relative;
+  }
+
+  .three-container {
+    display: flex;
+    justify-content: space-evenly;
+    height: 45vh;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    margin: 0;
+  }
+  
+  .game-window-1 {
+    position: relative;
+    border: 1px solid black;
+    width: 22vw;
+    margin: auto;
+  }
+  
+  .featured-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+  }
+  
+  .featured-games {
+    border: 1px solid black;
+    width: 70vw;
+    height: 40vh;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  .game-list5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem; /* Add any gap you want between the cards */
+    justify-items: center;
+  }
+
+  .game-item-container {
+    height: 25vh;
+    width: 13vw;
+    justify-content: center;
+  }
+
+  .game-item {
+    height: 25vh;
+    width: 13vw;
+    outline: 1px solid black;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .page-numbers {
+    display: flex;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .boardgame-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .boardgame-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel {
+    margin: 0 auto;
+    /* justify-content: center; */
+    height: inherit;
+    width: inherit;
+  }
+
+  .left-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 2px;
+    font-size: 55px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 2px;
+    font-size: 55px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .carousel-dot-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel-dot {
+    margin: 0 2px;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .carousel-image {
+    height: inherit;
+    width: inherit;
+  }
+
+  .game-details {
+    height: var(--window-height);
+    overflow: auto;
+  }
+
+  .description-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+    overflow: auto;
+    white-space: pre-line;
+  }
+
+  .description-content {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .description-name {
+    text-align: center;
+  }
+
+  .description-list {
+    list-style: none;
+    text-align: left;
+  }
+
+  .description-list li {
+    padding-bottom: 10px;
+    font-size: large;
+  }
+
+  .description-p {
+    font-size: large;
+    font-weight: bold;
+    display: inline;
+  }
+
+  .description-image {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    object-fit: fill;
+    opacity: 0.3;
+    z-index: -1;
   }
 }

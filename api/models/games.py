@@ -19,18 +19,33 @@ class PydanticObjectId(ObjectId):
 class GameIn(BaseModel):
     name: str
     publisher: str
-    max_players: int
     min_players: int
+    max_players: int
+    min_game_length: int
+    max_game_length: int
     genre: str
-    game_length: int
-    interaction: str
     picture_url: List
-    websites: List
-    theming: str
-    rules: str #base rules
-    formats: List #extended rules
+    websites: Optional[list]
+    theming: List
+    rules: Optional[str] #base rules
+    formats: Optional[list]
+    bgg_rating: int
     ratings: List[int]
     comments: List
+    game_mechanics: List
+    description: str
+
+# name
+# publ
+# image 
+# thumbnail 
+# max players
+# min players
+# genre = subdomain 
+# themeing = category
+# length
+# boardgame mechanics
+# description
 
 class Game(GameIn):
     id: PydanticObjectId
