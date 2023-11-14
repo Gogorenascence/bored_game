@@ -29,8 +29,8 @@ class GameIn(BaseModel):
     theming: List
     rules: Optional[str] #base rules
     formats: Optional[list]
-    bgg_rating: int
-    ratings: List[int]
+    bgg_rating: float
+    ratings: List[float]
     comments: List
     game_mechanics: List
     description: str

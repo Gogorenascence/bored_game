@@ -2,6 +2,7 @@
   --window-height: calc(100vh - 103px);
   --window-height-account: calc(100vh - 180px);
   --window-width200: calc(80vw - 200px);
+  --detail-right-width: calc(70vw - 500px);
 }
 
 .App {
@@ -435,29 +436,34 @@
   }
 
   .game-details {
-    height: var(--window-height);
-    overflow: auto;
+    height: auto; 
   }
 
   .description-container {
     position: relative;
-    height: 100%;
+    height: auto;
     width: 100%;
-    display: block;
-    overflow: auto;
+    display: flex;
+    justify-content: center;
     white-space: pre-line;
   }
 
   .description-content {
     position: absolute;
-    left: 0;
+    width: 70vw;
+    min-width: 800px;
+    margin: auto;
+    outline: 1px solid black;
+    background-color: rgb(255, 255, 255, 0.7);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
+    min-height: var(--window-height);
   }
 
   .description-name {
     text-align: center;
+    font-size: 70px;
   }
 
   .description-list {
@@ -470,12 +476,6 @@
     font-size: large;
   }
 
-  .description-p {
-    font-size: large;
-    font-weight: bold;
-    display: inline;
-  }
-
   .description-image {
     position: fixed;
     height: 100%;
@@ -484,5 +484,93 @@
     object-fit: fill;
     opacity: 0.3;
     z-index: -1;
+  }
+
+  .game-details-grid {
+    display: flex;
+    justify-content: center;
+  }
+
+  .game-details-left {
+    height: auto;
+    width: auto; 
+    outline: solid 1px black;
+  }
+
+  .game-details-right {
+    height: auto;
+    width: var(--detail-right-width);
+    min-width: 400px;
+    outline: solid 1px black;
+  }
+
+  .game-details-top-right {
+    height: 85px;
+    width: auto; 
+  }
+
+  .game-details-bottom-right {
+    height: 565px;
+    width: auto;
+    overflow: auto;
+  }
+
+  .game-details-top-left {
+    height: 500px;
+    width: 500px;
+  }
+
+  .game-details-bottom-left {
+    height: 150px;
+    width: 500px;
+    font-size: larger;
+  }
+
+  .darken {
+    filter: brightness(0.4);
+  }
+
+  .description-image-overlay {
+    height: 500px;
+    width: 500px;
+  }
+
+  .description-overlay-top {
+    position: absolute;
+    top: 500px;
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    padding-left: 24px;
+  }
+
+  .description-overlay-bottom {
+    position: absolute;
+    top: 550px;
+    z-index: 1;
+    color: white;
+    padding-left: 30px;
+    font-size: 40px;
+  }
+
+  .details-text {
+    font-size: larger;
+    margin: 0;
+  }
+
+  .details-description {
+    padding: 10px 70px 0 70px;
+    display: flex;
+    text-align: left;
+  }
+
+  .detail-headings {
+    margin: 10px 0 0 0;
+  }
+
+  .large-detail-headings {
+    font-size: 40px;
+    padding: 30px 0 0 0;
+    margin: 0;
   }
 }

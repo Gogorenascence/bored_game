@@ -60,9 +60,7 @@ class GameQueries(Queries):
             document["id"] = str(document["_id"])
             all_time_games.append(GameOut(**document))
         monthly_games = all_time_games
-        print(monthly_games)
         daily_games = all_time_games
-
         return all_time_games, monthly_games, daily_games
 
     def get_game(self, id) -> GameOut:
@@ -70,6 +68,10 @@ class GameQueries(Queries):
         if not props:
             return None
         props["id"] = str(props["_id"])
+        if props["ratings"] == [] or len(props["ratings"]) == 0:
+            props["ratings"] = props["ratings"]
+        else:
+            [sum(props["ratings"])/len(props["ratings"])]
         return GameOut(**props)
     
     def update_game(self, id: str, game: GameIn) -> GameOut:
