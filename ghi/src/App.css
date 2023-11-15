@@ -13,6 +13,14 @@
   }
 }
 
+.play-button {
+  background-color: black;
+  color: white;
+  margin-left: 80px;
+  border-radius: 50%;
+  position: relative;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -308,14 +316,14 @@
     position: relative;
     margin: 0;
   }
-  
+
   .game-window-1 {
     position: relative;
     border: 1px solid black;
     width: 22vw;
     margin: auto;
   }
-  
+
   .featured-container {
     display: flex;
     justify-content: center;
@@ -323,7 +331,7 @@
     height: 50vh;
     width: 100%;
   }
-  
+
   .featured-games {
     border: 1px solid black;
     width: 70vw;
