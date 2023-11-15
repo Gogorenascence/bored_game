@@ -1,12 +1,7 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import re
-import json
-# from routers.games import create_game
 import asyncio
 from queries.games import GameQueries
-from pymongo import MongoClient
-import os
 
 async def main():
     game_queries = GameQueries()
