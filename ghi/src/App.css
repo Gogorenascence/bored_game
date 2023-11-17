@@ -44,6 +44,14 @@
   }
 }
 
+a {
+  text-decoration: none;
+}
+
+a.active {
+  color: fuchsia;
+}
+
 .game-item {
   width: 100%;
   height: 40vh;
@@ -153,6 +161,7 @@
   width: 100%;
   height: 40vh;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .featured-container {
@@ -168,6 +177,44 @@
   width: 100vw;
   height: 40vh;
 }
+
+.carousel {
+  margin: 0 auto;
+  height: inherit;
+  width: inherit;
+}
+
+.carousel-image {
+  height: inherit;
+  width: inherit;
+}
+
+.carousel-dot-container {
+  display: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 2px;
+  font-size: 55px;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 2px;
+  font-size: 55px;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+
 .game-label {
   margin: 0 0 10px 0;
 }
@@ -179,11 +226,16 @@
 
 .page-numbers {
   display: flex;
+  padding: 0 4px 0 4px;
+}
+
+.page-number{
+  padding: 0 1.4px 0 1.4px;
 }
 
 .pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .boardgame-title {
@@ -202,15 +254,44 @@
   display: none;
 }
 
-@media (min-width: 800px) {
-  /* body {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
-    background-size: 75vw;
-    background-repeat: repeat;
-    height: 100%;
-    width: 100%;
-  } */
+.description-image {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  object-fit: fill;
+  opacity: 0.3;
+  z-index: -1;
+}
 
+.description-container {
+  position: relative;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  white-space: pre-line;
+}
+
+.description-content {
+  position: absolute;
+  width: 80vw;
+  margin: auto;
+  outline: 1px solid black;
+  background-color: rgb(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: var(--window-height);
+}
+
+.description-image-overlay {
+  height: 70vw;
+  width: 70vw;
+}
+
+
+@media (min-width: 800px) {
   .navbar {
     height: 103px;
   }
@@ -372,13 +453,47 @@
     display: flex;
   }
 
+  .page-number {
+    border: 2px solid indigo;
+    background: white;
+    padding: 0;
+    border-radius: 5px;
+    width: 32px;
+    text-align: center;
+  }
+
+  .page-numbers a.active h4 {
+    background: indigo;
+    color: white;
+  }
+
   .pagination {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .page-nav {
+    margin: 0.3rem;
+    background-color: white;
+    color: indigo;
+    padding: 0;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid indigo;
+    cursor: pointer;
+  }
+
+  .page-nav.prev::after {
+    content: ' Previous';
+  }
+
+  .page-nav.next::before {
+    content: 'Next ';
   }
 
   .boardgame-title {
-    margin: 0;
+    margin: 0 0 5px 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -389,9 +504,12 @@
     height: 100%;
   }
 
+  .boardgame-image:hover {
+    transform: scale(1.1);
+  }
+
   .carousel {
     margin: 0 auto;
-    /* justify-content: center; */
     height: inherit;
     width: inherit;
   }
