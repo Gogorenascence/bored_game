@@ -80,9 +80,6 @@ async def main():
             "ratings": [
                 0
             ],
-            "comments": [
-                "n/a"
-            ],
             "game_mechanics": mechanics,
             "description": description_html.text.replace("<br/>", "\n")
             }

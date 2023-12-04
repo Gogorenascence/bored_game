@@ -6,9 +6,10 @@ import { Game } from "./Games/GameInterface"
 function MainPage() {
     
 
-    const [topTenGamesThisMonth, setTopTenGamesThisMonth] = useState([])
-    const [topTenGamesToday, setTopTenGamesToday] = useState([])
+    const [topTenGamesThisMonth, setTopTenGamesThisMonth] = useState<Game[]>([])
+    const [topTenGamesToday, setTopTenGamesToday] = useState<Game[]>([])
     const [topTenGamesAllTime, setTopTenGamesAllTime] = useState<Game[]>([])
+    const [featuredGames, setFeaturedGames] = useState<Game[]>([])
 
     const getGames = async() => {
         const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/games/`)
@@ -16,6 +17,7 @@ function MainPage() {
         setTopTenGamesAllTime(gameData.slice(0, 10))
         setTopTenGamesToday(gameData.slice(10, 20)) //logic needs to be updated
         setTopTenGamesThisMonth(gameData.slice(20, 30)) //logic needs to be updated
+        setFeaturedGames(gameData.slice(-10)) //logic needs to be updated
     }
 
     useEffect(() => {
@@ -51,7 +53,9 @@ function MainPage() {
                 <div>
                     <h1 className="section-title">Featured Games</h1>
                     <div className="featured-games">
-                        <p>{topTenGamesAllTime[0]?.name}</p>
+                        {featuredGames.map((game) => (
+                                <p key={game.id}>{game.name}</p>
+                        ))}
                     </div>
                 </div>
             </div>

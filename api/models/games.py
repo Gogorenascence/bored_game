@@ -31,21 +31,8 @@ class GameIn(BaseModel):
     formats: Optional[list]
     bgg_rating: float
     ratings: List[float]
-    comments: List
     game_mechanics: List
     description: str
-
-# name
-# publ
-# image 
-# thumbnail 
-# max players
-# min players
-# genre = subdomain 
-# themeing = category
-# length
-# boardgame mechanics
-# description
 
 class Game(GameIn):
     id: PydanticObjectId

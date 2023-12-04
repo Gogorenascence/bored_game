@@ -449,6 +449,11 @@ a.active {
     overflow: hidden;
   }
 
+  .game-item:hover {
+    transform: scale(1.16);
+    z-index: 5;
+  }
+
   .page-numbers {
     display: flex;
   }
@@ -502,10 +507,6 @@ a.active {
   .boardgame-image {
     width: 100%;
     height: 100%;
-  }
-
-  .boardgame-image:hover {
-    transform: scale(1.1);
   }
 
   .carousel {

@@ -26,4 +26,17 @@ class Post(PostIn):
     id: PydanticObjectId
 
 class PostOut(PostIn):
-    id: str 
+    id: str
+
+class CommentIn(BaseModel):
+    game_id: str
+    user_id: str
+    content: list[str]
+    created: dict
+    updated: dict
+
+class Comment(CommentIn):
+    id: PydanticObjectId
+
+class CommentOut(CommentIn):
+    id: str
