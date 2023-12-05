@@ -60,7 +60,7 @@ function Navbar() {
         <nav className="navbar" ref={navBar}>
             <div className="navmain">
                 <div className="nav-header">
-                    <NavLink to="/" className="logo-link"><img src="bored-game-logo.svg" alt="logo"/></NavLink>
+                    <NavLink to="/" className="logo-link"><img className="logo-nav" src="Bored_Games-removebg-preview.png" alt="bored-game-logo.svg"/></NavLink>
                     <i className="fa fa-bars" aria-hidden="true" onClick={() => handleShowMenu()}></i>
                 </div>
                 <ul className={showMenu ? "show-menu" : "menu"}>

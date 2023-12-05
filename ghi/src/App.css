@@ -9,47 +9,12 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 a {
   text-decoration: none;
 }
 
 a.active {
-  color: fuchsia;
+  color: #FF3131;
 }
 
 .game-item {
@@ -66,8 +31,13 @@ a.active {
   font-size: 0.875rem;
   font-family: sans-serif;
   line-height: 2.2;
-  background-color: indigo;
+  background-color: #262931;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo-nav {
+  height: 103px;
+  width: 103px;
 }
 
 .nav-header {
@@ -79,7 +49,7 @@ a.active {
 
 .fa-bars {
   font-size: 1.5rem;
-  color: #24ad89;
+  color: #FFDE59;
   cursor: pointer;
 }
 
@@ -100,7 +70,7 @@ a.active {
 }
 
 .link:hover {
-  background-color: fuchsia;
+  background-color: #f4ca22;
   padding-left: 1.5rem;
 }
 
@@ -116,7 +86,7 @@ a.active {
 }
 
 .dropdown-link:hover {
-  background-color: fuchsia;
+  background-color: #f4ca22;
   padding-left: 1.5rem;
 }
 
@@ -292,8 +262,14 @@ a.active {
 
 
 @media (min-width: 800px) {
-  .navbar {
+  /* .navbar {
     height: 103px;
+  } */
+
+  .logo-nav {
+    height: 120px;
+    width: 120px;
+    margin-left: 30px;
   }
 
   .navmain {
@@ -301,7 +277,7 @@ a.active {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: .3rem;
   }
 
   .nav-right {
@@ -313,7 +289,7 @@ a.active {
 
   .nav-button {
     margin: 0.3rem;
-    background-color: indigo;
+    background-color: #262931;
     color: white;
     padding: 0;
     width: 100px;
@@ -326,7 +302,7 @@ a.active {
     top: 102.8px;
     position: absolute;
     z-index: 20;
-    background-color: rgb(105, 0, 180);
+    background-color: #31353d70;
     height: auto;
     justify-content: center;
     align-items: center;
@@ -336,7 +312,7 @@ a.active {
   }
 
   .dropdown-link:hover {
-    background-color: fuchsia;
+    background-color: #f4ca22;
     transition: all 0.5s;
     padding: 0.5rem 1rem;
     width: 83.6%;
@@ -459,7 +435,7 @@ a.active {
   }
 
   .page-number {
-    border: 2px solid indigo;
+    border: 2px solid #262931;
     background: white;
     padding: 0;
     border-radius: 5px;
@@ -468,7 +444,7 @@ a.active {
   }
 
   .page-numbers a.active h4 {
-    background: indigo;
+    background: #262931;
     color: white;
   }
 
@@ -481,11 +457,11 @@ a.active {
   .page-nav {
     margin: 0.3rem;
     background-color: white;
-    color: indigo;
+    color: #262931;
     padding: 0;
     width: 100px;
     border-radius: 5px;
-    border: 2px solid indigo;
+    border: 2px solid #262931;
     cursor: pointer;
   }
 
