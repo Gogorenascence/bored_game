@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import Carousel from "./Carousel"
+import Coverflow from "./CoverflowSwiper"
 import { Game } from "./Games/GameInterface"
 
 function MainPage() {
@@ -23,8 +24,6 @@ function MainPage() {
     useEffect(() => {
         getGames()
     }, [])
-
-    console.log(topTenGamesAllTime)
     
     return (
         <div className="main-content">
@@ -53,9 +52,10 @@ function MainPage() {
                 <div>
                     <h1 className="section-title">Featured Games</h1>
                     <div className="featured-games">
-                        {featuredGames.map((game) => (
+                        {/* {featuredGames.map((game) => (
                                 <p key={game.id}>{game.name}</p>
-                        ))}
+                        ))} */}
+                        <Coverflow games={featuredGames}></Coverflow>
                     </div>
                 </div>
             </div>

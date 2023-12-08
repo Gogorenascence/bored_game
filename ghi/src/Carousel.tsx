@@ -38,15 +38,10 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         <div className="carousel-dot-container">
             {games.map((game, gameIndex) => (
                 <>
-                    <div key={gameIndex} 
-                        className={ currentIndex !== gameIndex ? "carousel-dot" : "hidden" } 
+                    <div key={game.id} 
+                        className={"carousel-dot"} 
                         onClick={() => goToGame(gameIndex)}>
-                        &#9675;
-                    </div>
-                    <div key={gameIndex} 
-                        className={ currentIndex === gameIndex ? "carousel-dot" : "hidden" } 
-                        onClick={() => goToGame(gameIndex)}>
-                        &#9679;
+                        {currentIndex === gameIndex ? "●" : "○"}
                     </div>
                 </>
             ))}

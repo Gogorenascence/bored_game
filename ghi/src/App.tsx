@@ -4,9 +4,11 @@ import MainPage from './MainPage';
 import Navbar from './Navbar';
 import AllGames from './Games/AllGames';
 import GameDetails from './Games/GameDetails';
+import AppProvider from './Context/AppProvider';
 
 function App() {
   return (
+    <AppProvider>
     <BrowserRouter>
     <Navbar/>
       <div className="App">
@@ -17,6 +19,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </AppProvider>
   );
 }
 
