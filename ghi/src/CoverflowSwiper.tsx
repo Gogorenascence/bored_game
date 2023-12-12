@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
 import { Game } from "./Games/GameInterface";
@@ -10,6 +11,8 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-coverflow';
 
 const Coverflow: React.FC<{ games: Game[]}> = ({ games }) => {
+
+    const navigate = useNavigate()
 
     return (
         <Swiper
@@ -36,7 +39,8 @@ const Coverflow: React.FC<{ games: Game[]}> = ({ games }) => {
         >
         {games.map((game) => (
             <SwiperSlide key={game.id} className="swiper-slide">
-                <img src={game.picture_url[1]} alt="game-image"/>
+                <img src={game.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${game.id}`)}/>
             </SwiperSlide>
         ))}
         </Swiper>

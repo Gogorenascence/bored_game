@@ -1,7 +1,7 @@
-import React from "react";
-import { AuthContextProvider } from "./AuthContext";
+import React, { useState } from "react";
+import { AuthContextProvider, AuthContextType } from "./AuthContext";
 
-const AppProvider = ({children}) => {
+const AppProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <AuthContextProvider>
             {children}

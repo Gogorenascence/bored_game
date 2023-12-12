@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext, token } from "./Context/AuthContext";
+import { AuthContext, Token } from "./Context/AuthContext";
 
 
 function Navbar() {
@@ -8,29 +8,29 @@ function Navbar() {
     interface dropDownMenu {
         show: boolean;
         section: string
-    }
+    }  
 
-    // const {
-    //     signUpError,
-    //     setSignUpError,
-    //     loginError,
-    //     setLoginError,
-    //     setToken,
-    //     getToken,
-    //     getUsers,
-    //     signUpCred,
-    //     setSignUpCred,
-    //     loginCred,
-    //     setLoginCred,
-    //     signUpCredCheck,
-    //     passwordCon,
-    //     setPasswordCon,
-    //     signup,
-    //     login,
-    //     logout,
-    //     account,
-    //     getAccountData,
-    //   } = useContext(AuthContext)
+    const {
+        signUpError,
+        setSignUpError,
+        loginError,
+        setLoginError,
+        setToken,
+        getToken,
+        getUsers,
+        signUpCred,
+        setSignUpCred,
+        loginCred,
+        setLoginCred,
+        signUpCredCheck,
+        passwordCon,
+        setPasswordCon,
+        signup,
+        login,
+        logout,
+        account,
+        getAccountData,
+      } = useContext(AuthContext)!;
 
     const [showLogin, setShowLogin] = useState(false)
     const [showSignup, setShowSignup] = useState(false)
@@ -82,32 +82,32 @@ function Navbar() {
         };
       }, [showMenu]);
 
-    // useEffect(() => {
-    //     getAccountData();
-    //     getUsers();
-    //     getToken()
-    //         .then((token: token) => {
-    //             if (token) {
-    //                 setToken(token);
-    //             }
-    //         });
-    // }, [signUpCred]);
+    useEffect(() => {
+        getAccountData();
+        getUsers();
+        getToken()
+            .then((token: Token | null) => {
+                if (token) {
+                    setToken(token);
+                }
+            });
+    }, [signUpCred]);
 
-    // const resetLoginCred = () => {
-    //     setLoginCred({
-    //         username: "",
-    //         password: "",
-    //     });
-    // }
+    const resetLoginCred = () => {
+        setLoginCred({
+            username: "",
+            password: "",
+        });
+    }
 
-    // const Login = async(event) => {
-    //     event.preventDefault();
-    //     const token = await login(loginCred);
-    //     if (token) {
-    //         resetLoginCred();
-    //         setShowLogin(false);
-    //     }
-    // }
+    const Login = async(event: Event) => {
+        event.preventDefault();
+        const token = await login();
+        if (token) {
+            resetLoginCred();
+            setShowLogin(false);
+        }
+    }
 
     return (
 

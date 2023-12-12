@@ -3,6 +3,8 @@
   --window-height-account: calc(100vh - 180px);
   --window-width200: calc(80vw - 200px);
   --detail-right-width: calc(70vw - 500px);
+  --bgyellow: #f4ca22;
+  --bgred: #FF3131;
 }
 
 .App {
@@ -14,7 +16,7 @@ a {
 }
 
 a.active {
-  color: #FF3131;
+  color: var(--bgred);
 }
 
 .game-item {
@@ -49,7 +51,7 @@ a.active {
 
 .fa-bars {
   font-size: 1.5rem;
-  color: #FFDE59;
+  color: var(--bgyellow);
   cursor: pointer;
 }
 
@@ -70,7 +72,7 @@ a.active {
 }
 
 .link:hover {
-  background-color: #f4ca22;
+  background-color: var(--bgyellow);
   padding-left: 1.5rem;
 }
 
@@ -86,7 +88,7 @@ a.active {
 }
 
 .dropdown-link:hover {
-  background-color: #f4ca22;
+  background-color: var(--bgyellow);
   padding-left: 1.5rem;
 }
 
@@ -169,7 +171,7 @@ a.active {
   transform: translate(0, -50%);
   left: 2px;
   font-size: 55px;
-  color: white;
+  color: var(--bgyellow);
   z-index: 1;
   cursor: pointer;
 }
@@ -180,7 +182,7 @@ a.active {
   transform: translate(0, -50%);
   right: 2px;
   font-size: 55px;
-  color: white;
+  color: var(--bgyellow);
   z-index: 1;
   cursor: pointer;
 }
@@ -262,10 +264,6 @@ a.active {
 
 
 @media (min-width: 800px) {
-  /* .navbar {
-    height: 103px;
-  } */
-
   .logo-nav {
     height: 120px;
     width: 120px;
@@ -328,7 +326,7 @@ a.active {
   }
 
   .dropdown-link:hover {
-    background-color: #f4ca22;
+    background-color: var(--bgyellow);
     transition: all 0.5s;
     padding: 0.5rem 1rem;
     width: 83.6%;
@@ -452,7 +450,7 @@ a.active {
 
   .page-number {
     border: 2px solid #262931;
-    background: white;
+    background: var(--bgyellow);
     padding: 0;
     border-radius: 5px;
     width: 32px;
@@ -505,6 +503,7 @@ a.active {
     margin: 0 auto;
     height: inherit;
     width: inherit;
+    position: relative;
   }
 
   .left-arrow {
@@ -513,7 +512,7 @@ a.active {
     transform: translate(0, -50%);
     left: 2px;
     font-size: 55px;
-    color: white;
+    color: var(--bgyellow);
     z-index: 1;
     cursor: pointer;
   }
@@ -524,7 +523,7 @@ a.active {
     transform: translate(0, -50%);
     right: 2px;
     font-size: 55px;
-    color: white;
+    color: var(--bgyellow);
     z-index: 1;
     cursor: pointer;
   }
@@ -532,13 +531,31 @@ a.active {
   .carousel-dot-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    z-index: 1;
+    bottom: 8px;
+    width: 5vw;
+    height: 20px;
+    left: 8.5vw;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .carousel-dot {
+    opacity: 0.5;
     margin: 0 2px;
     cursor: pointer;
     font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
+    background: var(--bgyellow);
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+  }
+
+  .carousel-dot.active {
+    opacity: 1;
   }
 
   .carousel-image {
@@ -559,23 +576,35 @@ a.active {
   .swiper .swiper-button-prev::after {
     content: '🢔';
     font-size: 150px;
-    color: white;
+    color: var(--bgyellow);
   }
 
   .swiper .swiper-button-next::after {
     content: '🢖';
     font-size: 150px;
-    color: white;
+    color: var(--bgyellow);
+  }
+
+  .swiper .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
+    display: flex;
+    width: 6.5vw;
+    height: 20px;
+    left: 32.25vw;
+    bottom: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
   }
 
   .swiper .swiper-pagination-bullet {
     opacity: 0.5;
-    background: white;
+    background: var(--bgyellow);
   }
 
   .swiper .swiper-pagination-bullet-active {
     opacity: 1;
-    background: white;
+    background: var(--bgyellow);
   }
 
   .game-details {

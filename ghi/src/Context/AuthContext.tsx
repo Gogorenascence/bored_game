@@ -1,9 +1,61 @@
 import { createContext, useState } from "react";
+import React from "react";
 
+export interface AuthContextType {
+    signUpError: string[],
+    setSignUpError: React.Dispatch<React.SetStateAction<string[]>>,
+    loginError: string,
+    setLoginError: React.Dispatch<React.SetStateAction<string>>,
+    getToken: () => Promise<any>,
+    getUsers: () => Promise<void>,
+    users: Account[],
+    token: Token | null,
+    setToken: React.Dispatch<React.SetStateAction<null | Token>>,
+    signUpCred: SignUpCred,
+    setSignUpCred: React.Dispatch<React.SetStateAction<SignUpCred>>,
+    updateCred: {
+        email: string;
+        username: string;
+        password: string;
+        unhashed_password: string;
+        collection: never[];
+        wishlist: never[];
+        roles: never[];
+        created_on: {};
+    },
+    setUpdateCred: React.Dispatch<React.SetStateAction<{
+        email: string;
+        username: string;
+        password: string;
+        unhashed_password: string;
+        collection: never[];
+        wishlist: never[];
+        roles: never[];
+        created_on: {};
+    }>>,
+    update: (event: Event) => Promise<void>,
+    updateWithOutPass: (event: Event) => Promise<void>,
+    passwordCon: string,
+    setPasswordCon: React.Dispatch<React.SetStateAction<string>>,
+    loginCred: {
+        username: string;
+        password: string;
+    },
+    setLoginCred: React.Dispatch<React.SetStateAction<{
+        username: string;
+        password: string;
+    }>>,
+    signUpCredCheck: (signUpCred: SignUpCred) => Promise<string[]>,
+    signup: (event: Event) => Promise<void>,
+    login: () => Promise<any>,
+    logout: () => Promise<void>,
+    getAccountData: () => Promise<void>,
+    account: Account,
+}
 
-const AuthContext = createContext();
+const AuthContext = createContext<AuthContextType | null>(null);
 
-export interface token {
+export interface Token {
     access_token: string,
     token_type: string,
     account: {
@@ -25,24 +77,66 @@ export interface token {
     }
 }
 
-const AuthContextProvider = ({ children }) => {
+interface SignUpCred {
+    email: string,
+    username: string,
+    password: string,
+    collection: [],
+    wishlist: [],
+    roles: [],
+    created_on: {},
+    }
+
+interface Account {
+    email: string,
+    username: string,
+    password: string,
+    unhashed_password: string,
+    profile_picture: string,
+    collection: string[],
+    wishlist: string[],
+    recomendations: string[],
+    games_played: string[],
+    friends: string[],
+    availability: {},
+    preferences: {},
+    socials: string[],
+    created_on: {},
+    id: string,
+}
+
+const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [loginError, setLoginError] = useState("")
-    const [signUpError, setSignUpError] = useState([])
-    const [account, setAccount] = useState("")
-    const [token, setToken] = useState(null);
-    const [users, setUsers] = useState([])
+    const [signUpError, setSignUpError] = useState<string[]>([])
+    const [account, setAccount] = useState<Account>({
+        email: "",
+        username: "",
+        password: "",
+        unhashed_password: "",
+        profile_picture: "",
+        collection: [],
+        wishlist: [],
+        recomendations: [],
+        games_played: [],
+        friends: [],
+        availability: {},
+        preferences: {},
+        socials: [],
+        created_on: {},
+        id: "",
+    })
+    const [token, setToken] = useState<Token | null>(null);
+    const [users, setUsers] = useState<Account[]>([])
     const [loginCred, setLoginCred] = useState({
         username: "",
         password: "",
         })
-    const [signUpCred, setSignUpCred] = useState({
+    const [signUpCred, setSignUpCred] = useState<SignUpCred>({
         email: "",
         username: "",
         password: "",
         collection: [],
         wishlist: [],
-        decks: [],
-        favorited_decks: [],
         roles: [],
         created_on: {},
         })
@@ -53,14 +147,12 @@ const AuthContextProvider = ({ children }) => {
         unhashed_password: "",
         collection: [],
         wishlist: [],
-        decks: [],
-        favorited_decks: [],
         roles: [],
         created_on: {},
         })
     const [passwordCon, setPasswordCon] = useState("")
 
-    const getToken = async (event) => {
+    const getToken = async () => {
         return fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/token/`, {
             credentials: "include",
         })
@@ -69,7 +161,7 @@ const AuthContextProvider = ({ children }) => {
         .catch(console.error);
     };
 
-    const signup = async (event) => {
+    const signup = async (event: Event) => {
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/`
         console.log(signUpCred)
         fetch(url, {
@@ -83,7 +175,7 @@ const AuthContextProvider = ({ children }) => {
         .catch(console.error);
     };
 
-    const update = async (event) => {
+    const update = async (event: Event) => {
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}`
         fetch(url, {
             method: "put",
@@ -96,7 +188,7 @@ const AuthContextProvider = ({ children }) => {
         .catch(console.error);
     };
 
-    const updateWithOutPass = async (event) => {
+    const updateWithOutPass = async (event: Event) => {
         const url = `${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/accounts/${account.id}/without`
         console.log(url)
         console.log(updateCred)
@@ -171,8 +263,8 @@ const AuthContextProvider = ({ children }) => {
         setUsers(data)
     }
 
-    const signUpCredCheck = async(signUpCred) => {
-        const check = []
+    const signUpCredCheck = async(signUpCred: SignUpCred) => {
+        const check:string[] = []
         const specialChar = ["!","@","$","&","+","~"]
         if (users.some(account => account.username === signUpCred.username)) {
             check.push("An account with this username already exists")
