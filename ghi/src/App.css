@@ -230,8 +230,17 @@ a.active {
   padding: 0 4px 0 4px;
 }
 
-.page-number{
+.page-number {
+  color: #262931;
   padding: 0 1.4px 0 1.4px;
+}
+
+.page-nav {
+  color: #262931;
+}
+
+a.active > .page-number {
+  color: var(--bgred);
 }
 
 .pagination {
