@@ -11,10 +11,10 @@ export interface Game {
     theming: string[],
     rules: string,
     formats: string[],
+    bgg_rating: number,
     ratings: number[],
-    comments: string[],
     game_mechanics: string[],
-    description: string
+    description: string,
     created: {},
     updated: {},
     id: string

@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext, Token } from "./Context/AuthContext";
 
 
 function Navbar() {
@@ -7,7 +8,32 @@ function Navbar() {
     interface dropDownMenu {
         show: boolean;
         section: string
-    }
+    }  
+
+    const {
+        signUpError,
+        setSignUpError,
+        loginError,
+        setLoginError,
+        setToken,
+        getToken,
+        getUsers,
+        signUpCred,
+        setSignUpCred,
+        loginCred,
+        setLoginCred,
+        signUpCredCheck,
+        passwordCon,
+        setPasswordCon,
+        signup,
+        login,
+        logout,
+        account,
+        getAccountData,
+      } = useContext(AuthContext)!;
+
+    const [showLogin, setShowLogin] = useState(false)
+    const [showSignup, setShowSignup] = useState(false)
     
     const navBar = useRef<HTMLDivElement>(null);
 
@@ -56,15 +82,42 @@ function Navbar() {
         };
       }, [showMenu]);
 
+    useEffect(() => {
+        getAccountData();
+        getUsers();
+        getToken()
+            .then((token: Token | null) => {
+                if (token) {
+                    setToken(token);
+                }
+            });
+    }, [signUpCred]);
+
+    const resetLoginCred = () => {
+        setLoginCred({
+            username: "",
+            password: "",
+        });
+    }
+
+    const Login = async(event: Event) => {
+        event.preventDefault();
+        const token = await login();
+        if (token) {
+            resetLoginCred();
+            setShowLogin(false);
+        }
+    }
+
     return (
+
         <nav className="navbar" ref={navBar}>
             <div className="navmain">
                 <div className="nav-header">
-                    <NavLink to="/" className="logo-link"><img src="bored-game-logo.svg" alt="logo"/></NavLink>
+                    <NavLink to="/" className="logo-link"><img className="logo-nav" src="Bored_Games-removebg-preview.png" alt="bored-game-logo.svg"/></NavLink>
                     <i className="fa fa-bars" aria-hidden="true" onClick={() => handleShowMenu()}></i>
                 </div>
                 <ul className={showMenu ? "show-menu" : "menu"}>
-                {/* <ul className="show-menu"> */}
                     <li >
                         <NavLink to="/" className="link" onClick={() => handleShowDropdownMenu(true, "home")}>Home</NavLink>
                     </li>
@@ -94,13 +147,27 @@ function Navbar() {
                         <div className="link pointer" onClick={() => handleShowDropdownMenu(true, "gameobjects")}>Game Objects</div>
                     </li>
                     <li className="user-log-signin">
-                        <div className="link pointer">Log In</div>
-                        <div className="link pointer">Sign Up</div>
+                        <div className="link pointer" onClick={() => setShowLogin(true)}>Log In</div>
+                        <div className="link pointer" onClick={() => setShowSignup(true)}>Sign Up</div>
                     </li>
                 </ul>
+                {
+                showLogin ?
+                <div className="medium-modal">
+                    <button onClick={() => setShowLogin(false)}>x</button>
+                </div> 
+                : null
+                }
+                {
+                showSignup ?
+                <div className="medium-modal">
+                    <button onClick={() => setShowSignup(false)}>x</button>
+                </div> 
+                : null
+                }
                 <div className="nav-right">
-                    <p className="nav-button">Log In</p>
-                    <p className="nav-button">Sign Up</p>
+                    <p className="nav-button" onClick={() => setShowLogin(true)}>Log In</p>
+                    <p className="nav-button" onClick={() => setShowSignup(true)}>Sign Up</p>
                 </div>
             </div>
         </nav>

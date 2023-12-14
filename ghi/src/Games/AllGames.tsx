@@ -17,6 +17,8 @@ import {Game} from "./GameInterface"
         let totalPages = 0
         const [allPages, setAllPages] = useState<number[]>([])
 
+        console.log(allPages)
+
     const getAllGames = async() =>{
         const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/games/`);
         const data = await response.json();
@@ -49,7 +51,7 @@ import {Game} from "./GameInterface"
                         <div className="game-item-container">
                             <h4 className="boardgame-title">{game.name}</h4>
                             <div className="game-item">
-                                <img className="boardgame-image" 
+                                <img className="boardgame-image pointer" 
                                     src={game.picture_url[1]} 
                                     alt={game.picture_url[0]} 
                                     onClick={() => onGameClick(game)}
@@ -60,17 +62,21 @@ import {Game} from "./GameInterface"
             })}
             </div>
             <div className="pagination">
-                <h4>Previous</h4>
+                <NavLink to={`/games/${currentPage > 1 ? currentPage - 1 : 1}`}>
+                    <h4 className="page-nav prev">❮</h4>
+                </NavLink>
             	<div className="page-numbers">
                 {allPages.map(page => {
                     return (
                         <NavLink to={`/games/${page}`} key={page}>
-                            <h4>{page}</h4>
+                            <h4 className="page-number">{page}</h4>
                         </NavLink>
                     )
                 })}                 
                 </div>
-                <h4>Next</h4>
+                <NavLink to={`/games/${currentPage < allPages.length ? currentPage +1 : allPages.length}`}>
+                    <h4 className="page-nav next">❯</h4>
+                </NavLink>
             </div>
         </div>
     )

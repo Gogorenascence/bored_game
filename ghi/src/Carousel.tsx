@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Game } from "./Games/GameInterface";
 import { useNavigate } from "react-router-dom";
 
 const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
 
     const goToPrevious = () => {
         const isFirstGame = currentIndex === 0
@@ -23,8 +24,22 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        let intervalId: NodeJS.Timeout;
+
+        if (!isHovered) {
+            // Slide to the next image every 3 seconds (adjust as needed)
+            intervalId = setInterval(goToNext, 3000);
+        }
+
+        return () => {
+            // Clear the interval when the component unmounts or when isHovered changes
+            clearInterval(intervalId);
+        };
+    }, [currentIndex, isHovered]);
+
     return (
-    <div className="carousel">
+    <div className="carousel" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div className="left-arrow" onClick={goToPrevious}>
             &#129172;
         </div>
@@ -38,15 +53,9 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         <div className="carousel-dot-container">
             {games.map((game, gameIndex) => (
                 <>
-                    <div key={gameIndex} 
-                        className={ currentIndex !== gameIndex ? "carousel-dot" : "hidden" } 
+                    <div key={game.id} 
+                        className={currentIndex === gameIndex ? "carousel-dot active" : "carousel-dot"} 
                         onClick={() => goToGame(gameIndex)}>
-                        &#9675;
-                    </div>
-                    <div key={gameIndex} 
-                        className={ currentIndex === gameIndex ? "carousel-dot" : "hidden" } 
-                        onClick={() => goToGame(gameIndex)}>
-                        &#9679;
                     </div>
                 </>
             ))}
