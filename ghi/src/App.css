@@ -165,43 +165,18 @@ a.active {
 
 .swiper .swiper-button-prev::after {
   content: '🢔';
-  font-size: 150px;
+  font-size: 75px;
   color: var(--bgyellow);
 }
 
 .swiper .swiper-button-next::after {
   content: '🢖';
-  font-size: 150px;
+  font-size: 75px;
   color: var(--bgyellow);
 }
 
 .swiper .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
-  display: flex;
-  width: 8vw;
-  height: 20px;
-  left: 31vw;
-  bottom: 8px;
-  background-color: rgba(0, 0, 0, 0.75);
-  justify-content: center;
-  align-items: center;
-  border-radius: 7px;
-  margin: 0;
-}
-
-.featured-games .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {    
-  margin: 0 2px;
-}
-
-.swiper .swiper-pagination-bullet {
-  opacity: 0.5;
-  background: var(--bgyellow);
-  height: 1vh;
-  width: .5vw;
-}
-
-.swiper .swiper-pagination-bullet-active {
-  opacity: 1;
-  background: var(--bgyellow);
+  display: none;
 }
 
 .carousel {
