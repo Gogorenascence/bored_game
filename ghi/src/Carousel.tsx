@@ -28,7 +28,7 @@ const Carousel: React.FC<{ games: Game[]}> = ({ games }) => {
         let intervalId: NodeJS.Timeout;
 
         if (!isHovered) {
-            // Slide to the next image every 5 seconds (adjust as needed)
+            // Slide to the next image every 3 seconds (adjust as needed)
             intervalId = setInterval(goToNext, 3000);
         }
 

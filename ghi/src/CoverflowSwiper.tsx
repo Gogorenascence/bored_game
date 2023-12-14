@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react"
 import { Game } from "./Games/GameInterface";
 
 import 'swiper/css';
@@ -16,10 +16,12 @@ const Coverflow: React.FC<{ games: Game[]}> = ({ games }) => {
 
     return (
         <Swiper
-            init={true} 
+            init={true}
+            modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
             className="swiper-container"
             loop={true}
-            slidesPerView={"auto"}
+            slidesPerView={'auto'}
+            slidesPerGroup={1}
             effect={"coverflow"}
             pagination={{ clickable: true }}
             centeredSlides={true}
@@ -31,18 +33,57 @@ const Coverflow: React.FC<{ games: Game[]}> = ({ games }) => {
                 modifier: 1,
             }}
             navigation
-            initialSlide={0}
+            initialSlide={1}
             autoplay={{
-                delay: 2000,
+                delay: 3000,
             }}
-            modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
         >
-        {games.map((game) => (
+        {/* {games.map((game) => (
             <SwiperSlide key={game.id} className="swiper-slide">
                 <img src={game.picture_url[1]} alt="game-image"
                 onClick={() => navigate(`game/${game.id}`)}/>
             </SwiperSlide>
-        ))}
+        ))} */}
+            <SwiperSlide className="swiper-slide">
+                <img src={games[0]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[0].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[1]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[1].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[2]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[2].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[3]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[3].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[4]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[4].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[5]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[5].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[6]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[6].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[7]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[7].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[8]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[8].id}`)}/>
+            </SwiperSlide>
+            <SwiperSlide className="swiper-slide">
+                <img src={games[9]?.picture_url[1]} alt="game-image"
+                onClick={() => navigate(`game/${games[9].id}`)}/>
+            </SwiperSlide>
         </Swiper>
     );
 };

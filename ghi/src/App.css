@@ -104,7 +104,6 @@ a.active {
   width: 100vw;
   margin: auto;
   height: auto;
-  outline: 1px solid black;
   position: relative;
 }
 
@@ -145,9 +144,64 @@ a.active {
 }
 
 .featured-games {
-  outline: 1px solid black;
   width: 100vw;
   height: 40vh;
+}
+
+.swiper.swiper-container {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-slide.swiper-slide {
+  height: 40vh;
+  width: 40vh;
+}
+
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper .swiper-button-prev::after {
+  content: '🢔';
+  font-size: 150px;
+  color: var(--bgyellow);
+}
+
+.swiper .swiper-button-next::after {
+  content: '🢖';
+  font-size: 150px;
+  color: var(--bgyellow);
+}
+
+.swiper .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
+  display: flex;
+  width: 8vw;
+  height: 20px;
+  left: 31vw;
+  bottom: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  margin: 0;
+}
+
+.featured-games .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {    
+  margin: 0 2px;
+}
+
+.swiper .swiper-pagination-bullet {
+  opacity: 0.5;
+  background: var(--bgyellow);
+  height: 1vh;
+  width: .5vw;
+}
+
+.swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--bgyellow);
 }
 
 .carousel {
@@ -380,6 +434,7 @@ a.active {
     align-items: center;
     border: 1px solid black;
     position: relative;
+    overflow: hidden;
   }
 
   .three-container {
@@ -449,8 +504,9 @@ a.active {
   }
 
   .page-number {
-    border: 2px solid #262931;
-    background: var(--bgyellow);
+    border: 2px solid white;
+    background: #262931;
+    color: white;
     padding: 0;
     border-radius: 5px;
     width: 32px;
@@ -458,8 +514,9 @@ a.active {
   }
 
   .page-numbers a.active h4 {
+    border: 2px solid white;
     background: #262931;
-    color: white;
+    color: var(--bgred);
   }
 
   .pagination {
@@ -470,12 +527,12 @@ a.active {
 
   .page-nav {
     margin: 0.3rem;
-    background-color: white;
-    color: #262931;
+    background-color: #262931;
+    color: white;
     padding: 0;
     width: 100px;
     border-radius: 5px;
-    border: 2px solid #262931;
+    border: 2px solid white;
     cursor: pointer;
   }
 
@@ -535,9 +592,9 @@ a.active {
     border-radius: 7px;
     z-index: 1;
     bottom: 8px;
-    width: 5vw;
+    width: 8vw;
     height: 20px;
-    left: 8.5vw;
+    left: 7vw;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.75);
   }
@@ -546,11 +603,10 @@ a.active {
     opacity: 0.5;
     margin: 0 2px;
     cursor: pointer;
-    font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
     background: var(--bgyellow);
-    height: 8px;
-    width: 8px;
+    height: 1vh;
+    width: .5vw;
     border-radius: 50%;
   }
 
@@ -563,9 +619,14 @@ a.active {
     width: inherit;
   }
 
+  .swiper.swiper-container {
+    height: 100%;
+    width: 100%;
+  }
+
   .swiper-slide.swiper-slide {
-    height: 522px;
-    width: 522px;
+    height: 40vh;
+    width: 40vh;
   }
 
   .swiper-slide img {
@@ -587,19 +648,26 @@ a.active {
 
   .swiper .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
     display: flex;
-    width: 6.5vw;
+    width: 8vw;
     height: 20px;
-    left: 32.25vw;
+    left: 31vw;
     bottom: 8px;
     background-color: rgba(0, 0, 0, 0.75);
     justify-content: center;
     align-items: center;
     border-radius: 7px;
+    margin: 0;
+  }
+
+  .featured-games .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {    
+    margin: 0 2px;
   }
 
   .swiper .swiper-pagination-bullet {
     opacity: 0.5;
     background: var(--bgyellow);
+    height: 1vh;
+    width: .5vw;
   }
 
   .swiper .swiper-pagination-bullet-active {
