@@ -421,6 +421,54 @@ a.active > .page-number {
     overflow: hidden;
   }
 
+  .dice {
+    font-size: 280px;
+    height: 160px;
+    width: 160px;
+    margin: 80px auto;
+    transform-style: preserve-3d;
+    perspective: 510px;
+  }
+
+  .d6 {
+    position: absolute;
+    translate: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    line-height: 125px;
+  }
+
+  .d6-front {
+    transform: rotateX(0deg) translateZ(80px);
+    right: 28px;
+    opacity: 0.5;
+  }
+  .d6-top {
+    transform: rotateX(90deg) translateZ(80px);
+    right: 28px;
+  }
+  .d6-right {
+    transform: rotateY(90deg) translateZ(80px);
+    font-size: 290px;
+    left: 1px;
+  }
+  .d6-left {
+    transform: rotateY(-90deg) translateZ(80px);
+    font-size: 271px;
+    top: 1px;
+  }
+  .d6-bottom {
+    transform: rotateX(-90deg) translateZ(80px);
+    right: 28px;
+  }
+  .d6-back {
+    transform: rotateY(-180deg) translateZ(80px);
+    left: 22px;
+    font-size: 280px;
+    z-index: -1;
+  }
+
   .three-container {
     display: flex;
     justify-content: space-evenly;

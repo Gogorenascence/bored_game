@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import Carousel from "./Carousel"
 import Coverflow from "./CoverflowSwiper"
 import { Game } from "./Games/GameInterface"
+import Dice from "./dice"
 
 function MainPage() {
     
@@ -28,6 +29,7 @@ function MainPage() {
     return (
         <div className="main-content">
             <h1 className="section-title">Most Popular Games</h1>
+            <Dice/>
             <div className="three-container">
                 <div>
                     <h3 className="game-label">All Time</h3>
